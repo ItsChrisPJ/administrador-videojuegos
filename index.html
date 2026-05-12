@@ -4,42 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador de Videojuegos</title>
-    
-    <!-- 1. Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- 2. Tu CSS Personalizado -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-light"> 
 
-    <!-- Contenedor principal: Diseño limpio y minimalista -->
     <main class="container my-5 p-4 bg-white shadow-sm rounded">
-        <h1 class="text-center mb-5 fw-light">Mi Colección de Juegos</h1>
+        <h1 class="text-center mb-4 fw-light">Mi Colección de Juegos</h1>
         
+        <div class="row mb-4 align-items-center bg-light p-3 rounded">
+            <div class="col-md-4">
+                <h5 class="m-0 text-muted">Estadísticas</h5>
+                <small id="stats-total">Total de juegos: 0</small> | 
+                <small id="stats-favoritos">Favoritos: 0</small>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="buscador" class="form-control form-control-sm border-0 shadow-sm" placeholder="🔍 Buscar por título...">
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="filtro-genero" class="form-control form-control-sm border-0 shadow-sm" placeholder="🎮 Filtrar por género...">
+            </div>
+        </div>
+
         <div class="row gap-4 justify-content-center">
             
-            <!-- Espacio para el Formulario (Área de Benjamín) -->
             <div class="col-md-4">
                 <h4 class="fw-light mb-3">Agregar Nuevo</h4>
-                <!-- Aquí Benjamín armará el formulario de ingreso -->
+                
+                <div id="alerta-error" class="alert alert-danger d-none small" role="alert"></div>
+
+                <form id="formulario-juego" class="card p-4 border-0 shadow-sm bg-light">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label text-muted small">Título del Juego *</label>
+                        <input type="text" class="form-control border-0" id="titulo">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="plataforma" class="form-label text-muted small">Plataforma *</label>
+                        <select class="form-select border-0" id="plataforma">
+                            <option value="">Selecciona una consola...</option>
+                            <option value="PC">PC</option>
+                            <option value="PlayStation 5">PlayStation 5</option>
+                            <option value="Nintendo Switch">Nintendo Switch</option>
+                            <option value="Xbox Series X/S">Xbox Series X/S</option>
+                            <option value="Otra">Otra</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="anio" class="form-label text-muted small">Año de Lanzamiento *</label>
+                        <input type="number" class="form-control border-0" id="anio" placeholder="Ej: 2023">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="genero" class="form-label text-muted small">Género</label>
+                        <input type="text" class="form-control border-0" id="genero" placeholder="Ej: RPG, Acción...">
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="favorito">
+                        <label class="form-check-label text-muted small" for="favorito">
+                            Marcar como favorito ⭐
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark w-100">Guardar Juego</button>
+                </form>
             </div>
 
-            <!-- Espacio para el Catálogo (Tu Área) -->
             <div class="col-md-7">
                 <h4 class="fw-light mb-3">Catálogo</h4>
                 <div class="row" id="contenedor-juegos">
-                    <!-- Aquí tu JavaScript inyectará las tarjetas (cards) de los videojuegos -->
-                </div>
+                    </div>
             </div>
 
         </div>
     </main>
 
-    <!-- 3. Bootstrap JS (Útil si luego deciden usar modales o alertas dinámicas) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- 4. Tu archivo JavaScript (Siempre va al final del body) -->
     <script src="js/app.js"></script>
 </body>
 </html>
